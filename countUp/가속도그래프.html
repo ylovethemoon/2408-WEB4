@@ -50,8 +50,7 @@
         <p class="time">t</p>
         <p class="value">v</p>
         <div class="dots">
-            <div class="dot"></div>
-            <div class="dot"></div>
+
         </div>       
     </div>
 
@@ -66,6 +65,12 @@
         // 반복문 사용!!
         // left 값은 t 에 따라
         // bottom 값은 v 에 따라 
+
+        const dots = document.querySelector('.dots');
+        const dot = document.createElement('div');
+        dot.classList.add('dot')
+
+        dots.appendChild(dot)
 
         
         
