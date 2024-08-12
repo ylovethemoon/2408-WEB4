@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>가속도 적용</title>
 </head>
 <body>
     <p class="count"></p>
@@ -22,6 +22,7 @@
         
         for (let i = 0 ; i <= totalFrame ; i++) {  
             const 진행도 = i/totalFrame; 
+            //  i/totalFrame = i / 120  = 0.0083333....
             setTimeout(() => {
                 count.innerText = parseInt(goal * easeInExpo(진행도))
             }, i/frame * 1000)
@@ -30,7 +31,7 @@
 
 
         // x에는 진행도가 들어가면 되는 함수. 
-        // easing.net
+        // 출처 : easing.net 
         function easeInOutCubic(x) {
             return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
             }
@@ -40,8 +41,6 @@
             return x === 0 ? 0 : Math.pow(2, 10 * x - 10);
             }
 
-
-        // 효율적으로 count 를 처리하는 방식
     </script>
 </body>
 </html>
