@@ -66,11 +66,61 @@
         // left 값은 t 에 따라
         // bottom 값은 v 에 따라 
 
-        const dots = document.querySelector('.dots');
-        const dot = document.createElement('div');
-        dot.classList.add('dot')
 
-        dots.appendChild(dot)
+
+        // dot의 개수 자유롭게 설정 가능.
+        const dotCount = 10;
+        const dots = document.querySelector('.dots');
+
+
+        for (let i = 0 ; i < dotCount ; i++) {
+            const divDot = document.createElement('div');
+            divDot.classList.add('dot')
+
+            dots.appendChild(divDot)
+        } 
+        // ---까지 dot 넣기.
+
+        // const time = 2;
+        // const goal = 1000000;
+        // const frame = 60;
+        // const totalFrame = time * frame;
+
+        // for (let i = 0 ; i <= totalFrame ; i++) {  
+        //     const 진행도 = parseInt(i/totalFrame); 
+        //     //  i/totalFrame = i / 120  = 0.0083333....
+        //     dots.children[i].style.left = `${진행도}px`
+        // }
+
+
+        for(let i = 0 ; i < dotCount ; i++) {
+            dots.children[i].style.left = `${i*(300/dotCount)}px`
+            dots.children[i].style.bottom = `${i*(300/dotCount)}px`
+        }
+
+        // dots.children[0].style.left = '4px'
+        // dots.children[1].style.left = '8px'
+        // dots.children[2].style.left = '12px'           
+
+
+        // const time = 2;
+        // const goal = 1000000;
+        // const frame = 60;
+        // const totalFrame = time * frame;
+
+        // for (let i = 0 ; i <= totalFrame ; i++) {  
+        //     const 진행도 = i/totalFrame; 
+        //     //  i/totalFrame = i / 120  = 0.0083333....
+        //     setTimeout(() => {
+        //         dots.children[i].style.transform = 'translate(50%,50%)' 
+        //     }, i/frame * 1000)
+        // }
+
+        
+
+        
+
+
 
         
         
