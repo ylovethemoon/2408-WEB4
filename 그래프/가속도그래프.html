@@ -31,8 +31,8 @@
         }
 
         .dot {
-            width: 4px;
-            height: 4px;
+            width: 2px;
+            height: 2px;
             border-radius: 50%;
             background-color: red;
             position: absolute;
@@ -69,51 +69,68 @@
 
 
         // dot의 개수 자유롭게 설정 가능.
-        const dotCount = 200;
+        const dotCount = 100;
         const dots = document.querySelector('.dots');
 
 
-        for (let i = 0 ; i < dotCount ; i++) {
-            const divDot = document.createElement('div');
-            divDot.classList.add('dot')
+        for (let i = 0 ; i <= dotCount ; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot')
 
-            dots.appendChild(divDot)
+            const 진행도 = 100/dotCount * i
+            dot.style.left = `${진행도}%`
+            dot.style.bottom = `${easeInExpo(진행도/100)*100}%`
+
+            dots.appendChild(dot)
         } 
-        // ---까지 dot 넣기.
+    
+
+        for (let i = 0 ; i <= dotCount ; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot')
+            
+            const 진행도 = 100/dotCount * i
+            
+            dot.style.backgroundColor = 'blue'
+            dot.style.left = `${진행도}%`
+            dot.style.bottom = `${easeInOutBack(진행도/100)*100}%`
+
+            dots.appendChild(dot)
+        } 
+
+        for (let i = 0 ; i <= dotCount ; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot')
+            
+            const 진행도 = 100/dotCount * i
+            
+            dot.style.backgroundColor = 'green'
+            dot.style.left = `${진행도}%`
+            dot.style.bottom = `${easeOutBounce(진행도/100)*100}%`
+
+            dots.appendChild(dot)
+        } 
+
+
+        makeGraph (easeInOutCubic,'pink') 
 
 
 
-        for (let i = 0 ; i <= dotCount ; i++) {  
-            const 진행도 = i/dotCount; 
-            dots.children[i].style.left = `${i * 진행도}px`
-            dots.children[i].style.bottom = `${i * easeInOutCubic(진행도)}px`
+        function makeGraph (target,color) {
+            for (let i = 0 ; i <= dotCount ; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot')
+
+            const 진행도 = 100/dotCount * i
+
+            dot.style.backgroundColor = color
+            dot.style.left = `${진행도}%`
+            dot.style.bottom = `${target(진행도/100)*100}%`
+
+            dots.appendChild(dot)
+        } 
 
         }
-
-
-
-        // for(let i = 0 ; i < dotCount ; i++) {
-        //     dots.children[i].style.left = `${i*(300/dotCount)}px`
-        //     dots.children[i].style.bottom = `${i*(300/dotCount)}px`
-        // }
-
-        // dots.children[0].style.left = '4px'
-        // dots.children[1].style.left = '8px'
-        // dots.children[2].style.left = '12px'           
-
-
-        // const time = 2;
-        // const goal = 1000000;
-        // const frame = 60;
-        // const totalFrame = time * frame;
-
-        // for (let i = 0 ; i <= totalFrame ; i++) {  
-        //     const 진행도 = i/totalFrame; 
-        //     //  i/totalFrame = i / 120  = 0.0083333....
-        //     setTimeout(() => {
-        //         dots.children[i].style.transform = 'translate(50%,50%)' 
-        //     }, i/frame * 1000)
-        // }
 
         function easeInOutCubic(x) {
             return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
@@ -137,7 +154,23 @@
             ? (Math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
             : (Math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2;
             }
-                    
+
+
+        function easeOutBounce(x) {
+            const n1 = 7.5625;
+            const d1 = 2.75;
+
+            if (x < 1 / d1) {
+                return n1 * x * x;
+            } else if (x < 2 / d1) {
+                return n1 * (x -= 1.5 / d1) * x + 0.75;
+            } else if (x < 2.5 / d1) {
+                return n1 * (x -= 2.25 / d1) * x + 0.9375;
+            } else {
+                return n1 * (x -= 2.625 / d1) * x + 0.984375;
+            }
+            }
+                                            
     </script>
 </body>
 </html>
