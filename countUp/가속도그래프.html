@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가속도그래프 만들기</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        .graph {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            border: solid #222;
+            border-width: 0 0 1px 1px;
+            margin: 100px;
+        }
+
+        .time {
+            position: absolute;
+            right: 0px;
+            top: 100%;
+        }
+
+        .value {
+            position: absolute;
+            right: calc(100% + 5px);
+        }
+
+        .dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+            transform: translate(-50%,50%);
+            bottom: 0;
+            left: 0;
+        }
+
+        /* left 값은 시간에따라 */
+        /* bottom 값은 가속도에 따라 */
+    </style>
+</head>
+<body>
+    <div class="graph">
+        <p class="time">t</p>
+        <p class="value">v</p>
+        <div class="dots">
+
+        </div>       
+    </div>
+
+    <script>
+        // 마음에 드는 그래프 구현하기
+        // dot 을 이용해 그래프를 그려봅시다.
+        // dot은 자바스크립트로 만들어야하며,
+        // 좌표는 진행도(t)와 진행도와 함수를 이용해 얻은 값(v)을 이용합니다.
+        // dot의 개수는 자유롭게 설정할 수 있게 만들어주세요.
+
+        // dot은 자바스크립트로 가져와서 넣음! class 가져와야함
+        // 반복문 사용!!
+        // left 값은 t 에 따라
+        // bottom 값은 v 에 따라 
+
+
+
+        
+        // dot의 개수 자유롭게 설정 가능.
+        const dotCount = 200;
+        const dots = document.querySelector('.dots');
+
+
+        for (let i = 0 ; i < dotCount ; i++) {
+            const divDot = document.createElement('div');
+            divDot.classList.add('dot')
+
+            dots.appendChild(divDot)
+        } 
+        // ---까지 dot 넣기.
+
+
+
+        for (let i = 0 ; i <= dotCount ; i++) {  
+            const 진행도 = i/dotCount; 
+            dots.children[i].style.left = `${i * 진행도}px`
+            dots.children[i].style.bottom = `${i * easeInOutCubic(진행도)}px`
+
+        }
+
+
+
+        // for(let i = 0 ; i < dotCount ; i++) {
+        //     dots.children[i].style.left = `${i*(300/dotCount)}px`
+        //     dots.children[i].style.bottom = `${i*(300/dotCount)}px`
+        // }
+
+        // dots.children[0].style.left = '4px'
+        // dots.children[1].style.left = '8px'
+        // dots.children[2].style.left = '12px'           
+
+
+        // const time = 2;
+        // const goal = 1000000;
+        // const frame = 60;
+        // const totalFrame = time * frame;
+
+        // for (let i = 0 ; i <= totalFrame ; i++) {  
+        //     const 진행도 = i/totalFrame; 
+        //     //  i/totalFrame = i / 120  = 0.0083333....
+        //     setTimeout(() => {
+        //         dots.children[i].style.transform = 'translate(50%,50%)' 
+        //     }, i/frame * 1000)
+        // }
+
+        function easeInOutCubic(x) {
+            return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+            }
+
+
+        function easeInExpo(x) {
+            return x === 0 ? 0 : Math.pow(2, 10 * x - 10);
+            }       
+
+
+        function easeInBounce(x) {
+            return 1 - easeOutBounce(1 - x);
+            }           
+
+        function easeInOutBack(x) {
+            const c1 = 1.70158;
+            const c2 = c1 * 1.525;
+
+            return x < 0.5
+            ? (Math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
+            : (Math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2;
+            }
+                    
+    </script>
+</body>
+</html>
