@@ -69,7 +69,7 @@
 
 
         // dot의 개수 자유롭게 설정 가능.
-        const dotCount = 10;
+        const dotCount = 200;
         const dots = document.querySelector('.dots');
 
 
@@ -81,22 +81,21 @@
         } 
         // ---까지 dot 넣기.
 
-        // const time = 2;
-        // const goal = 1000000;
-        // const frame = 60;
-        // const totalFrame = time * frame;
-
-        // for (let i = 0 ; i <= totalFrame ; i++) {  
-        //     const 진행도 = parseInt(i/totalFrame); 
-        //     //  i/totalFrame = i / 120  = 0.0083333....
-        //     dots.children[i].style.left = `${진행도}px`
-        // }
 
 
-        for(let i = 0 ; i < dotCount ; i++) {
-            dots.children[i].style.left = `${i*(300/dotCount)}px`
-            dots.children[i].style.bottom = `${i*(300/dotCount)}px`
+        for (let i = 0 ; i <= dotCount ; i++) {  
+            const 진행도 = i/dotCount; 
+            dots.children[i].style.left = `${i * 진행도}px`
+            dots.children[i].style.bottom = `${i * easeInOutCubic(진행도)}px`
+
         }
+
+
+
+        // for(let i = 0 ; i < dotCount ; i++) {
+        //     dots.children[i].style.left = `${i*(300/dotCount)}px`
+        //     dots.children[i].style.bottom = `${i*(300/dotCount)}px`
+        // }
 
         // dots.children[0].style.left = '4px'
         // dots.children[1].style.left = '8px'
@@ -116,17 +115,29 @@
         //     }, i/frame * 1000)
         // }
 
-        
-
-        
-
-
-
-        
-        
+        function easeInOutCubic(x) {
+            return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+            }
 
 
-        
+        function easeInExpo(x) {
+            return x === 0 ? 0 : Math.pow(2, 10 * x - 10);
+            }       
+
+
+        function easeInBounce(x) {
+            return 1 - easeOutBounce(1 - x);
+            }           
+
+        function easeInOutBack(x) {
+            const c1 = 1.70158;
+            const c2 = c1 * 1.525;
+
+            return x < 0.5
+            ? (Math.pow(2 * x, 2) * ((c2 + 1) * 2 * x - c2)) / 2
+            : (Math.pow(2 * x - 2, 2) * ((c2 + 1) * (x * 2 - 2) + c2) + 2) / 2;
+            }
+                    
     </script>
 </body>
 </html>
