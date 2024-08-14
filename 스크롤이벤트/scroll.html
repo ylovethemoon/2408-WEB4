@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        .content {
+            width: 100px;
+            height: 100px;
+            margin-top: 2000px;
+            background-color: pink;
+        }
+
+        .content .active {
+            width: 100px;
+            height: 100px;
+            margin-top: 2000px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div class="content"></div>
+    <script>
+
+        // (e) 를 쓰고 console.log(e) 를 보면 정보를 콘솔에서 확인할 수 있음. 
+        // apple.com/ 스크롤 확인!
+
+        const content = document.querySelector('.content');
+
+        window.addEventListener('scroll', (e)=> {
+            console.log()
+            console.log(window.scrollY)
+        })
+    </script>
+</body>
+</html>
