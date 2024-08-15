@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll-for</title>
+</head>
+    <style>
+        body {
+            height: 5000px;
+        }
+
+        .content {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 50%;
+            transform: translateX(400px);
+
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .content .active {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border-radius: 50%;
+
+            opacity: 1;
+            transform: none;
+
+        }
+    </style>
+<body>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+        <div class="content"></div>
+
+    <script>
+        // 스크롤 인터렉션을 지정할 content를 여러개 만들고
+        // 반복문으로 전부 작동하게 해봅시다.
+
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+
+        // 여러개 있을때 처리하기
+
+       
+
+
+        window.addEventListener('scroll', ()=> {
+
+            const content = document.getElementsByClassName('content')
+
+            for (let i = 0 ; i < content.length ; i++) {
+            const contents = content[i].getBoundingClientRect()
+
+                if (contents.top <= window.innerHeight) {
+                    content[i].classList.add('active')
+                }
+
+
+
+
+            }
+
+        })
+
+
+
+
+
+
+
+    // const container = document.querySelector('.container')
+    // const contentCount = 10;
+    // for (let i = 0 ; i < contentCount ; i++) {
+    //     const content = document.createElement('div')
+    //     content.classList.add('content')
+
+        
+    //     const contentInfor = content.getBoundingClientRect();
+    //     console.log(contentInfor.top)
+        
+
+    //     container.appendChild(content)
+
+
+
+    // }
+
+    // // content 만들기.
+    // // contentCount에 숫자를 넣어서 content 개수 활용.
+
+
+
+
+
+      
+
+    </script>
+</body>
+</html>
