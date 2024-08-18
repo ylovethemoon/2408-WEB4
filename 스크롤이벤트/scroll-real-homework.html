@@ -15,10 +15,11 @@
             height: 100px;
             margin-top: 2000px;
             margin-right: 8px;
-            background-color: pink;
             opacity: 0;
             transform: translateX(200px);
             border-radius: 50%;
+
+
             background: rgb(34,193,195);
             background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 
@@ -40,11 +41,29 @@
     <div class="content"></div>
     <div class="content"></div>
     <div class="content"></div>
+    <div class="content"></div>
 
     <script>
-        const content = document.getElementsByClassName('content');
 
-        
+        // 스크롤 인터렉션을 지정할 content를 여러개 만들고
+        // 반복문으로 전부 작동하게 해봅시다.
+
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+        // <div class="content"></div>
+
+        // 여러개 있을때 처리하기
+
+
+
+
+
+
+        const content = document.getElementsByClassName('content');      
         
         
         window.addEventListener('scroll',(e)=>{
@@ -55,7 +74,6 @@
                 
                 if(pos.top <= window.innerHeight - pos.height){
                     content[i].classList.add('active');
-                    console.log('지금?')
                 } else {
                     content[i].classList.remove('active');
                 }
