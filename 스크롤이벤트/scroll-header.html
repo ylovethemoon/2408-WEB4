@@ -24,6 +24,10 @@
             transform: translateY(-100%);
         }
 
+        header.scrolled {
+            background-color: grey;
+        }
+
         
     </style>
 </head>
@@ -31,20 +35,26 @@
     <header></header>
     <script>
     const header = document.querySelector('header');
+    const ratio = 300;
 
     let preWindowY = window.scrollY ;
 
     window.addEventListener('scroll', () => {
         const windowY = window.scrollY ;
 
-
-        if (preWindowY < windowY) {
+        if (preWindowY < windowY && windowY > ratio ) {
             header.classList.add('hide')
         } else {
             header.classList.remove('hide')
         }
         
         preWindowY = windowY
+
+        if (windowY < ratio) {
+            header.classList.add('scrolled')
+        } else {
+            header.classList.remove('scrolled')
+        }
     })
     </script>
 </body>
