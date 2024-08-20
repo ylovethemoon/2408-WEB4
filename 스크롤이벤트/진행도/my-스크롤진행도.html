@@ -75,7 +75,7 @@
         const scrollProcess = document.querySelector('.scroll-process')
 
         window.addEventListener('scroll', getProgress)
-
+        window.addEventListener('resize', getProgress)
 
         function getProgress() {
             const 전체길이 = document.body.clientHeight;
