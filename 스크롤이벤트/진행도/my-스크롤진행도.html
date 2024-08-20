@@ -28,51 +28,64 @@
         }
 
         .scroll-process {
-            position: fixed;
-            width: 0%;
             height: 20px;
             background-color: aliceblue;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }       
     </style>
 </head>
 <body>
-    <div class="scroll-container"></div>
-    <div class="scroll-process">
+    <div class="scroll-container">
+        <div class="scroll-process"></div>
+    </div>
+    
     </div>
     <script>
-        // 현재스크롤, 전체스크롤 높이,
+
+        // 내가 했던 것 ... 👇🏻
+        // const scrollProcess = document.querySelector('.scroll-process')
+
+        // const body = document.querySelector('body')
+        // console.log(body.clientHeight)
+
+        // let preWindowY = window.scrollY ;
+
+        // window.addEventListener('scroll', () => {
+        //     const windowY = window.scrollY ;
+    
+        //     if (preWindowY < windowY) {
+        //        scrollProcess.style.width = `${parseInt(windowY/50)}%`
+        //        console.log(body.clientHeight);
+        //        console.log(parseInt(windowY))
+        //     } else {
+                
+        //     }
+        //     preWindowY = windowY
+        // })
+
+
+
+        // // scrollProcess.style.width = 0%  window.scrollY = 0
+        // // scrollProcess.style.width = ?   window.scrollY = 50
+        // // scrollProcess.style.width = 50% = window.scrollY  = 2500PX 
+        // // scrollProcess.style.width = 100% = window.scrollY = 5000px
+        // // window.scrollY/50 = scrollProcess.style.width
+        // // 
+        // //
+
         const scrollProcess = document.querySelector('.scroll-process')
 
-        const body = document.querySelector('body')
-        console.log(body.clientHeight)
-
-        let preWindowY = window.scrollY ;
-
-        window.addEventListener('scroll', () => {
-            const windowY = window.scrollY ;
-    
-            if (preWindowY < windowY) {
-               scrollProcess.style.width = `${parseInt(windowY/50)}%`
-               console.log(body.clientHeight);
-               console.log(parseInt(windowY))
-            } else {
-                
-            }
-            preWindowY = windowY
-        })
+        window.addEventListener('scroll', getProgress)
 
 
+        function getProgress() {
+            const 전체길이 = document.body.clientHeight;
+            const 현재스크롤 = window.scrollY;
 
-        // scrollProcess.style.width = 0%  window.scrollY = 0
-        // scrollProcess.style.width = ?   window.scrollY = 50
-        // scrollProcess.style.width = 50% = window.scrollY  = 2500PX 
-        // scrollProcess.style.width = 100% = window.scrollY = 5000px
-        // window.scrollY/50 = scrollProcess.style.width
-        // 
-        //
+            const 진행도 = 현재스크롤 / (전체길이 - window.innerHeight);
+            console.log(진행도)
+            scrollProcess.style.width = `${진행도*100}%` 
+        }
+
     </script>
 </body>
 </html>
