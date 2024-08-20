@@ -17,113 +17,69 @@
         }
 
         header {
+            position: fixed;
             width: 100%;
             height: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0px 10px;
+            padding: 0px 24px;
             background-color: #00000010;
-            position: fixed;
             transition: 0.7s;
-            
-            
+            box-sizing: border-box;
+                       
         }
 
-
-        svg #레이어_1 {
-            width: 100px;
-            height: 80px;
-        }
-
-        #hamberger {
-            position: absolute;
-            top: 50%;
-            right: 40px;
-            width: 36px;
-            height: 14px;
-            cursor: pointer;
-            z-index: 100;
-        }
-
-        #hamberger > span {
-            width: 26px;
-            height: 3px;
-            background-color: #ffffff;
-            display: block;
-            position: absolute;
-            top: 0;
-
-        }
-        #hamberger > span:last-child {
-            position: absolute;
-            top: auto;
-            right: 0;
-            bottom: 0;
-        }
-
-        #hamberger span:nth-child(1) {
-            bottom: 0px;
-        }
-        
-        #레이어_1 {
-            width: 100px;
-            height: 80px;
-        }
-
-        .st0 { 
-            fill:#ffffff;
-            transition: 0.7s;
-        }
-
-
+                
         header.hide {
             opacity: 0;
             transform: translateY(-100%);
         }
 
         header.scrolled {
-            width: 100%;
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 10px;
-            background-color: #00000010;
-            position: fixed;
-            transition: 0.5s;
-            
+            background-color: transparent;
         }
 
-        .st0 .scrolled { 
-            fill:#858585;
-            transition: 0.5s;
-        }
-
-        header.ratio {
-            width: 100%;
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0px 10px;
-            background-color: #00000000;
-            position: fixed;
-            transition: 0.5s;
-            
-        }
-
-        .st0 .ratio { 
+        .socar-logo {
+            width: 120px;
             fill:#ffffff;
-            transition: 0.5s;
         }
+
+        .hamberger {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 8px;
+            padding: 3px;
+        }
+
+        .patty {
+            display: block;
+            width: 36px;
+            height: 6px;
+            background-color: #ffffff;
+        }
+
+        .patty:first-child {
+            margin-right: auto;
+        }
+
+        .patty:last-child {
+            margin-left: auto;
+        }
+
+
+
+
 
     </style>
 </head>
 <body>
     <header>
-        <div class="header-container">
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="레이어_1" x="0px" y="0px" viewBox="0 0 160.2 32.5" style="enable-background:new 0 0 160.2 32.5;" xml:space="preserve">
+            <svg class="socar-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="레이어_1" x="0px" y="0px" viewBox="0 0 160.2 32.5" style="enable-background:new 0 0 160.2 32.5;" xml:space="preserve">
                 <g>
                     <g>
                         <path class="st0" d="M45.5,0.8C37,0.8,30,7.7,30,16.3c0,8.5,6.9,15.5,15.5,15.5s15.4-7,15.4-15.5C60.9,7.7,54,0.8,45.5,0.8z     M45.5,25.2c-4.9,0-8.9-4-8.9-8.9s4-8.9,8.9-8.9s8.9,4,8.9,8.9C54.4,21.2,50.4,25.2,45.5,25.2z"/>
@@ -137,11 +93,10 @@
                 </g>
             </svg>
             <!-- 오른쪽 로고 -->
-            <div id="hamberger" class="cth">
-                <span></span>
-                <span></span>            
-            </div>
-        </div>
+            <div class="hamberger">
+                <span class="patty"></span>
+                <span class="patty"></span>            
+            </div>      
     </header>
     <script>
 // 스크롤 방향에 따라 헤더를 조절하는 방법을 배웠습니다.
@@ -155,11 +110,7 @@
 // rgb(255,255,255,0.5)와 같다.)
 // 같은 속성을 이용할수있다.
     const header = document.querySelector('header');
-    const socarLogo = document.querySelectorAll('.st0');
-    const scrolled = 700;
     const ratio = 300;
-
-    console.log(socarLogo);
 
     let preWindowY = window.scrollY ;
 
@@ -168,30 +119,19 @@
 
         if (preWindowY < windowY) {
             header.classList.add('hide')
-            for (let i = 0 ; i < socarLogo.length ; i++) {
-                socarLogo[i].style.fill = '#222'
-            }
                         
         } else {
             header.classList.remove('hide')
-            for (let i = 0 ; i < socarLogo.length ; i++) {
-                socarLogo[i].style.fill = '#fff'
-            }
         }
         
         preWindowY = windowY
 
-        if (windowY < scrolled) {
+        if (windowY < ratio) {
             header.classList.add('scrolled')
         } else {
             header.classList.remove('scrolled')
         }
 
-        if (windowY < ratio ) {
-            header.classList.add('ratio')
-        } else {
-            header.classList.remove('ratio')
-        }
     })
         
     </script>

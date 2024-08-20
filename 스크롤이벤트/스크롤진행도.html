@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤진행도</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 5000px;
+            background: rgb(238,174,202);
+            background: linear-gradient(172deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroll-process {
+            position: fixed;
+            width: 1%;
+            height: 20px;
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+
+        
+    </style>
+</head>
+<body>
+    <div class="scroll-process">
+    </div>
+    <script>
+        // 현재스크롤, 전체스크롤 높이,
+        // 
+        const scrollProcess = document.querySelector('.scroll-process')
+
+        const body = document.querySelector('body')
+        console.log(body.clientHeight)
+
+
+        let preWindowY = window.scrollY ;
+
+        window.addEventListener('scroll', () => {
+            const windowY = window.scrollY ;
+    
+            if (preWindowY < windowY) {
+               scrollProcess.style.width = `${windowY/50}%`
+            } else {
+                
+            }
+            preWindowY = windowY
+        })
+
+
+
+        // window.scrollY = 0  0% 
+        // window.scrollY = 400px   
+        // window.scrollY = 50% = body.clientheight/2  = 2500PX 
+        // window.scrollY = 100% = body.clientheight = 5000px
+        // 5000px / 50 = %
+        // body. / 50 = width %
+        // windowY/50
+    </script>
+</body>
+</html>
