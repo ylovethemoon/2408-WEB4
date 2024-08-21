@@ -28,6 +28,7 @@
         }
 
         .scroll-process {
+            /* width: 0%; */
             height: 20px;
             background-color: aliceblue;
         }       
@@ -74,6 +75,10 @@
 
         const scrollProcess = document.querySelector('.scroll-process')
 
+
+        // 함수를 일단 실행 하고, 진행 ~
+        getProgress()
+        // 👇🏻 addEventListener 함수에는 함수를 쓸 때는 괄호를 쓰지말자. 
         window.addEventListener('scroll', getProgress)
         window.addEventListener('resize', getProgress)
 

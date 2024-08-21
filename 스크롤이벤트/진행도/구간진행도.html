@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구간진행도</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .space{
+            height: 2000px;
+        }
+        #target{
+            height: 2000px;
+            background: rgb(238,174,202);
+            background: linear-gradient(172deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        }
+
+        .progress {
+            position: fixed;
+            top: 32px;
+            right: 32px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="space"></div>
+    <section id="target"></section>
+    <div class="space"></div>
+    <div class="progress">0%</div>
+
+    <script>
+        // target이 view 에 들어오는 시점부터 0% 로 시작해
+        // view에서 사라지는 시점에 100%가 될 수 있게끔
+        // progress.innerText 를 조절해봅시다.
+
+        const progress = document.querySelector('.progress');
+        const target = document.querySelector('#target')
+        
+
+        
+
+        // target.top < 0  : 0% 시작
+        // tager.bottom < 0  : 100% 끝
+
+        window.addEventListener('scroll',()=> {
+            const targetinfo = target.getBoundingClientRect()
+
+            console.log((targetinfo.top - window.innerHeight)*-1);
+            console.log(targetinfo.height + window.innerHeight);
+
+
+
+            // progress.innerText = `${진행도*100}%` 
+
+
+        })
+        
+
+
+
+
+    </script>
+</body>
+</html>
