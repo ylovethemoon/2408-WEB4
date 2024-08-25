@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>패럴렉스 sticky</title>
     
     <style>
         * {
@@ -19,7 +19,7 @@
             display: none;
         } */
 
-        #패럴렉스 {
+        /* #패럴렉스 {
             width: 5000px;
             height: 100vh;
             
@@ -29,36 +29,99 @@
             position: fixed;
             border: 1px solid red;
             box-sizing: border-box;
+        } */
+
+
+        .container {
+            height: 5000px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper { 
+            width: 100%;
+            height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .content-wrapper:first-child {
+            background-color: #eeaeca;
+        }
+
+        .content-wrapper:nth-child(2) {
+            background-color: #d9b1d1;
+        }
+
+        .content-wrapper:nth-child(3) {
+            background-color: #c1b5d9;
+
+            width: 5000px;
+            position: sticky;
+            top: 0;
+            
+        }
+
+        .content-wrapper:nth-child(4) {
+            background-color: #aab8e1;
+            
+        }
+
+        .content-wrapper:nth-child(5) {
+            background-color: #94bbe9;
+            
+        }
+
+        h2 {
+            
         }
     </style>
 </head>
 <body>
-    <section id="패럴렉스">
+    <div class="container">
+        <div class="content-wrapper">
+            <h2>1</h2>
+            </div>
+        <div class="content-wrapper">
+            <h2>2</h2>
+        </div>
+        <div class="content-wrapper">
+            <h2>3</h2>
+        </div>
+        <div class="content-wrapper">
+            <h2>4</h2>
+        </div>
+        <div class="content-wrapper">
+            <h2>5</h2>
+        </div>
+    </div>
 
-    </section>
 
 
     <script>
 
         // position:sticky 로 여러섹션 만들어보기.
+        // sticky 는 top 값만 쓸 수 있음.
 
-
-
-        const 섹션 = document.getElementById('패럴렉스');
-        const scrollBar = window.innerWidth - document.body.clientWidth;
-        // body.clientWidth는 내가 보는 width
-        // innerWidth는 스크롤을 포함한 찐 width
+        // const 섹션 = document.getElementById('패럴렉스');
+        // const scrollBar = window.innerWidth - document.body.clientWidth;
+        // // body.clientWidth는 내가 보는 width
+        // // innerWidth는 스크롤을 포함한 찐 width
         
 
-        window.addEventListener('resize', () => {
-            document.body.style.height = `${섹션.getBoundingClientRect().width - window.innerWidth + scrollBar + window.innerHeight}px`;
-        })
+        // window.addEventListener('resize', () => {
+        //     document.body.style.height = `${섹션.getBoundingClientRect().width - window.innerWidth + scrollBar + window.innerHeight}px`;
+        // })
 
         
-        window.addEventListener('scroll', () =>{
-            console.log(window.scrollY)
-            섹션.style.transform = `translateX(-${window.scrollY}px)`
-        })
+        // window.addEventListener('scroll', () =>{
+        //     console.log(window.scrollY)
+        //     섹션.style.transform = `translateX(-${window.scrollY}px)`
+        // })
 
 
         
