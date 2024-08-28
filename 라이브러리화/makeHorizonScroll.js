@@ -61,10 +61,11 @@ function makeHorizonScroll(target,brakePoint) {
             horizonSticky.style.position = 'relative'
             moveContainer.style.width = `100%`;
         }else {
+            moveContainer.style.width = `fit-content`
             horizonContainer.style.height = `${moveContainer.getBoundingClientRect().width - window.innerWidth + window.innerHeight + scrollbarWidth}px`
             horizonSticky.style.height = `100vh`
             horizonSticky.style.position = 'sticky'
-            moveContainer.style.width = `fit-content`
+            
         }
     }
 
