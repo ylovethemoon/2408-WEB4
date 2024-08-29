@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery-CDN</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+    <!-- 나중에 쓸 함수나, CDN 같은 경우는 헤더 쪽에 넣는게 좋음 -->
+    <!-- CDN : jquery 주소를 넣었기 때문에 script  -->
+
+    <style>
+        .text {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <p class="text">안녕</p>
+    <button class="continue"></button>
+</body>
+<script>
+    $('button.continue').html('Next step...')
+
+    document.querySelector('.continue').innerHTML = '<p>Next step...</p>'
+    
+    // $('.continue').on('click', () => {
+    //     $('.text').css('display','flex')
+    // })
+   
+    const continueButton = document.querySelector('.continue');
+    const text = document.querySelector('.text');
+
+    continueButton.addEventListener('click', ()=> {
+        text.style.display = 'flex';
+    })
+    
+    
+
+</script>
+</html>
