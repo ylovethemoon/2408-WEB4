@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 5000px;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .modal-window {
+            width: 300px;
+            height: 200px;
+            background-color: white;
+            padding: 16px;
+            border-radius: 16px;
+
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 모달 배경을 만들기 위해 만들어줌. -->
+    <div class="modal">
+        <div class="modal-window">
+            모달창
+            <button class="close">X</button>
+        </div>
+    </div>
+
+    <button class="open">모달열기</button>
+    <script>
+        const modal = document.querySelector('.modal');
+        const openButton = document.querySelector('.open');
+        const closeButton = document.querySelector('.close');
+
+
+        openButton.addEventListener('click', ()=> {
+            openModal()
+        })
+
+        closeButton.addEventListener('click', ()=> {
+            closeModal()
+        })
+        
+        window.addEventListener('click',(e)=> {
+            // e.target 의 클래스명에 'modal'이 포함 되어 있으면 
+            if (e.target.classList.contains('modal')) {
+                closeModal()
+            }
+        })
+
+
+        window.addEventListener('keydown',(e)=> {
+            // e.key가 Escape (esc) 를 눌렀을 때 
+            if (e.key === 'Escape') {
+                closeModal()
+            }   
+        })
+
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function openModal() {
+            modal.style.display = 'flex';
+        }
+
+
+    </script>
+</body>
+</html>
