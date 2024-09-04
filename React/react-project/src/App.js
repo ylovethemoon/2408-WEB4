@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import Post from './Post'
+import { useRef, useState } from 'react';
 
   // 실제로 렌더링 되는것은 return 안에 있는 요소들이기 때문에
   // 구조가 같은 위치에 있으면 안된다. 같은 그룹으로 묶여야 함.
 function App() {
+
   const element = <h1 className='title'>안녕하세요 h1입니다</h1>
   const data = [{
       title : '첫글은 내꺼야',
@@ -20,6 +22,23 @@ function App() {
       text : '금요일도 사실 별로'
     }]
 
+    const [ number, setNumber ] = useState(0)
+    const handleIncressNumber = () => {
+      setNumber(number+1)
+    }
+
+
+    const [ text, setText ] = useState('')
+    const handleChangeText = (e) => {
+      setText(e.target.value)
+    }
+
+    const inputFocus = useRef()
+    const [ inputtext, setInputText ] = useState('')
+    const handleChangeTextToButton = (e) => {
+      setInputText(inputFocus.current.value)
+    }
+
   return (
     <div className="App">
       {element}
@@ -27,6 +46,20 @@ function App() {
         return <p>{value.title}</p>
       })} */}
       {/* 위 아래 두개가 같은 작성임. */}
+
+
+      {/* count 버튼 */}
+      <span>{number}</span>
+      <button onClick={handleIncressNumber}>count button</button>
+
+
+      {/* input */}
+      <input type='text' onChange={handleChangeText}/>
+      <p>input을 따라 쓰는 애 : {text}</p>
+
+      <input type='text' ref={inputFocus} />
+      <button onClick={handleChangeTextToButton}>input button</button>
+      <p>input button : {inputtext}</p>
       
       {data.map((value,key)=> 
         <p>{value.title}</p>
